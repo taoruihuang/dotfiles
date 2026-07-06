@@ -7,9 +7,9 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.hostPlatform = "aarch64-darwin"; # use x86_64-darwin for Intel CPU
 
-  system.primaryUser = "kunchen";
-  users.users.kunchen = {
-    home = "/Users/kunchen";
+  system.primaryUser = "taoruihuang";
+  users.users.taoruihuang = {
+    home = "/Users/taoruihuang";
   };
   system.stateVersion = 6;
   system.defaults = {
@@ -17,29 +17,60 @@
       AppleInterfaceStyle = "Dark";
       KeyRepeat = 2;          # fast key repeat
       InitialKeyRepeat = 15;  # short delay before repeat
-      _HIHideMenuBar = true;  # auto-hide the menu bar
+      _HIHideMenuBar = false; # keep the menu bar visible
       AppleShowAllExtensions = true;
     };
-    dock.autohide = true;
+    dock.autohide = false;
     finder.FXPreferredViewStyle = "Nlsv";  # list view by default
     finder.CreateDesktop = false;          # clean desktop
     trackpad.Clicking = true;              # tap to click
   };
   nix-homebrew = {
     enable = true;
-    user = "kunchen";
+    user = "taoruihuang";
+    autoMigrate = true;
   };
   homebrew = {
     enable = true;
-    onActivation.cleanup = "zap";  # remove anything not listed here
+    onActivation.cleanup = "none"; # first apply: do not remove unlisted Homebrew packages
     onActivation.autoUpdate = true;
     onActivation.extraFlags = [ "--force" ];
     brews = [
+      "automake"
+      "bison"
+      "chruby"
+      "fd"
+      "fzf"
+      "gcc"
+      "gdbm"
+      "gh"
+      "git"
       "herdr"
+      "jq"
+      "lazygit"
+      "libtermkey"
+      "libvterm"
+      "libyaml"
+      "mingw-w64"
+      "msgpack"
+      "neovim"
+      "node"
+      "openssl@1.1"
+      "python@3.13"
+      "ripgrep"
+      "ruby-install"
+      "starship"
+      "tmux"
+      "wget"
+      "zsh-autosuggestions"
+      "zsh-syntax-highlighting"
     ];
     casks = [
-      "wezterm"
       "claude-code"
+      "font-hack-nerd-font"
+      "ngrok"
+      "opensuperwhisper"
+      "wezterm"
     ];
   };
 }

@@ -5,8 +5,8 @@ let
 in
 
 {
-  home.username = "kunchen";
-  home.homeDirectory = "/Users/kunchen";
+  home.username = "taoruihuang";
+  home.homeDirectory = "/Users/taoruihuang";
   home.stateVersion = "24.11";
   home.packages = with pkgs; [
     # cli i use constantly
@@ -21,6 +21,9 @@ in
   ];
   fonts.fontconfig.enable = true;
   home.sessionVariables.EDITOR = "nvim";
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
 
   programs.zsh = {
     enable = true;
@@ -36,13 +39,17 @@ in
       pull = "git pull";
       m = "git switch main";
       cc = "claude --dangerously-skip-permissions";
-      co = "codex --full-auto";
+      co = "codex";
+      coby = "codex --dangerously-bypass-approvals-and-sandbox";
     };
   };
 
-  programs.git.settings.user = {
-    name = "kunchenguid";
-    email = "kun@kunchenguid.com";
+  programs.git.settings = {
+    user = {
+      name = "Taorui Huang";
+      email = "taoruih@gmail.com";
+    };
+    init.defaultBranch = "main";
   };
 
   programs.starship = {
@@ -59,19 +66,8 @@ in
   };
 
   # Edit-in-place: the real file stays in my repo, ~/.config just points at it.
-  home.file.".config/wezterm".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/wezterm";
   home.file.".config/nvim".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/nvim";
   home.file.".config/herdr".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/herdr";
-  home.file.".claude/settings.json".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.claude/settings.json";
-
-  home.file.".claude/CLAUDE.md".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
-  home.file.".codex/AGENTS.md".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
-  home.file.".config/opencode/AGENTS.md".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
 }

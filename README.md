@@ -95,8 +95,9 @@ If you don't use it, just remove it from `brews` in your copy.
 
 - `home/AGENTS.md` is my personal agent policy, and `home.nix` installs it for Claude, Codex, and opencode.
   If you clone this repo, you'd silently inherit my agent instructions - edit or delete `home/AGENTS.md` if you don't want that.
-- The `cc` and `co` shell aliases in `home.nix` are high-agency shortcuts: `claude --dangerously-skip-permissions` and `codex --full-auto`.
-  They're convenient for me, but know what they do before you use them.
+- The `cc` shell alias in `home.nix` is a high-agency Claude shortcut: `claude --dangerously-skip-permissions`.
+  The `co` alias is a beginner-safe shortcut for plain `codex`.
+  Know what `cc` does before you use it.
 
 ## Repo tour
 
